@@ -1,0 +1,2 @@
+# novel_game_ts_gal
+TSギャルゲー風ノベルゲーム風を作ります
