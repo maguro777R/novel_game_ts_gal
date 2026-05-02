@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ギャルゲー — デザインスクリーン一覧</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700&family=Pacifico&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+
+<template id="__bundler_thumbnail" data-bg-color="#1a0a14">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#1a0a14"/>
+    <!-- Gradient background glow -->
+    <radialGradient id="glow1" cx="50%" cy="100%" r="70%">
+      <stop offset="0%" stop-color="#FF8FAE" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#1a0a14" stop-opacity="0"/>
+    </radialGradient>
+    <rect width="1200" height="800" fill="url(#glow1)"/>
+    <!-- Magic ring -->
+    <circle cx="600" cy="400" r="280" fill="none" stroke="#FFB7C5" stroke-width="1.5" stroke-dasharray="8 8" opacity="0.3"/>
+    <circle cx="600" cy="400" r="220" fill="none" stroke="#D4B5FF" stroke-width="1" stroke-dasharray="4 10" opacity="0.2"/>
+    <!-- Star shapes -->
+    <path d="M600 180 l18 55 58 0 -47 34 18 55 -47-34 -47 34 18-55 -47-34 58 0z" fill="none" stroke="#FFB7C5" stroke-width="1.5" opacity="0.4"/>
+    <!-- Title text shape -->
+    <rect x="350" y="310" width="500" height="50" rx="25" fill="url(#tgrad)" opacity="0.8"/>
+    <defs>
+      <linearGradient id="tgrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#FFD6E4"/>
+        <stop offset="50%" stop-color="#FFB7C5"/>
+        <stop offset="100%" stop-color="#D4B5FF"/>
+      </linearGradient>
+    </defs>
+    <rect x="430" y="378" width="340" height="24" rx="12" fill="rgba(255,183,197,0.3)"/>
+    <!-- Color chips -->
+    <circle cx="420" cy="480" r="22" fill="#FFB7C5"/>
+    <circle cx="480" cy="480" r="22" fill="#FF8FAE"/>
+    <circle cx="540" cy="480" r="22" fill="#FF4D90"/>
+    <circle cx="600" cy="480" r="22" fill="#B5D5FF"/>
+    <circle cx="660" cy="480" r="22" fill="#D4B5FF"/>
+    <circle cx="720" cy="480" r="22" fill="#7AB8FF"/>
+    <!-- Small stars -->
+    <circle cx="200" cy="150" r="3" fill="#FFB7C5" opacity="0.6"/>
+    <circle cx="1000" cy="200" r="2" fill="#B5D5FF" opacity="0.5"/>
+    <circle cx="150" cy="600" r="4" fill="#D4B5FF" opacity="0.4"/>
+    <circle cx="1050" cy="650" r="3" fill="#FFB7C5" opacity="0.5"/>
+    <path d="M240 260 l5 15 16 0 -13 9 5 15 -13-9 -13 9 5-15 -13-9 16 0z" fill="#FFB7C5" opacity="0.3"/>
+    <path d="M960 560 l4 12 13 0 -11 8 4 12 -11-8 -11 8 4-12 -11-8 13 0z" fill="#D4B5FF" opacity="0.3"/>
+  </svg>
+</template>
+<style>
+:root {
+  --pink-50:#FFF0F4;--pink-100:#FFD6E4;--pink-200:#FFB7C5;--pink-300:#FF8FAE;
+  --pink-400:#FF6FA8;--pink-500:#FF4D90;--pink-600:#E8006F;
+  --blue-100:#E8F4FF;--blue-200:#B5D5FF;--blue-300:#7AB8FF;
+  --lavender:#D4B5FF;--offwhite:#FFF4F7;--cream:#FFF8FA;
+  --text-dark:#3D1A2B;--text-mid:#7A4060;--text-light:#B88099;
+  --font-main:'Zen Maru Gothic',sans-serif;
+  --font-title:'Pacifico',cursive;
+  --font-body:'Klee One',sans-serif;
+  --shadow-card:0 8px 32px rgba(61,26,43,0.09);
+  --shadow-pink:0 6px 24px rgba(255,111,168,0.3);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-main);background:var(--offwhite);min-height:100vh;overflow-x:hidden;}
+
+/* ── BG ── */
+.bg-fixed{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 8% 15%,rgba(255,183,197,0.16) 0%,transparent 65%),
+    radial-gradient(ellipse 50% 40% at 92% 85%,rgba(181,213,255,0.14) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 30% at 75% 5%,rgba(212,181,255,0.11) 0%,transparent 55%);
+}
+.bg-dots{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(circle,rgba(255,183,197,0.13) 1px,transparent 1px);
+  background-size:30px 30px;}
+
+/* ── FLOATING STARS ── */
+.fstar{position:fixed;pointer-events:none;z-index:0;opacity:0.15;animation:fst var(--d,8s) ease-in-out var(--dl,0s) infinite;}
+@keyframes fst{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-16px) rotate(15deg);}}
+
+/* ── HERO HEADER ── */
+.hero{
+  position:relative;z-index:1;
+  text-align:center;
+  padding:72px 40px 56px;
+  background:linear-gradient(135deg,#2a0e1e 0%,#1a0a14 60%,#0d0820 100%);
+  overflow:hidden;
+}
+.hero::before{content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 120%,rgba(255,143,174,0.18) 0%,transparent 70%),
+    radial-gradient(ellipse 50% 40% at 20% 50%,rgba(181,213,255,0.08) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 30% at 80% 30%,rgba(212,181,255,0.10) 0%,transparent 55%);}
+/* magic ring in hero */
+.hero-ring{position:absolute;bottom:-140px;left:50%;transform:translateX(-50%);
+  width:500px;height:500px;opacity:0.1;pointer-events:none;}
+.hero-ring svg{width:100%;height:100%;}
+.hr1{animation:rcw 20s linear infinite;transform-origin:center;}
+.hr2{animation:rccw 14s linear infinite;transform-origin:center;}
+@keyframes rcw{to{transform:rotate(360deg);}}
+@keyframes rccw{to{transform:rotate(-360deg);}}
+
+.hero-eyebrow{position:relative;z-index:1;font-family:var(--font-body);font-size:13px;
+  color:rgba(255,183,197,0.55);letter-spacing:0.25em;margin-bottom:16px;}
+.hero-title{position:relative;z-index:1;font-family:var(--font-title);font-size:clamp(36px,5vw,60px);
+  background:linear-gradient(135deg,#FFD6E4 0%,#FFB7C5 40%,#D4B5FF 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 24px rgba(255,111,168,0.4));margin-bottom:10px;}
+.hero-ruby{position:relative;z-index:1;font-family:var(--font-main);font-weight:700;font-size:16px;
+  color:rgba(255,183,197,0.75);letter-spacing:0.3em;margin-bottom:20px;}
+.hero-desc{position:relative;z-index:1;font-family:var(--font-body);font-size:14px;
+  color:rgba(255,183,197,0.55);line-height:1.8;max-width:480px;margin:0 auto 28px;}
+.hero-badges{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;}
+.hero-badge{padding:6px 18px;border-radius:999px;font-family:var(--font-main);font-size:12px;font-weight:700;
+  border:1.5px solid;backdrop-filter:blur(8px);}
+.hb-pink{color:#FFB7C5;border-color:rgba(255,183,197,0.35);background:rgba(255,183,197,0.08);}
+.hb-blue{color:#B5D5FF;border-color:rgba(181,213,255,0.35);background:rgba(181,213,255,0.08);}
+.hb-purple{color:#D4B5FF;border-color:rgba(212,181,255,0.35);background:rgba(212,181,255,0.08);}
+
+/* ── CONTENT ── */
+.content{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:56px 40px 80px;}
+
+/* ── SECTION HEADING ── */
+.sec-heading{margin-bottom:28px;}
+.sec-label{font-family:var(--font-title);font-size:13px;color:var(--pink-400);letter-spacing:0.12em;margin-bottom:4px;}
+.sec-title{font-family:var(--font-main);font-weight:700;font-size:22px;color:var(--text-dark);
+  display:flex;align-items:center;gap:12px;}
+.sec-title::after{content:'';flex:1;height:2px;border-radius:999px;
+  background:linear-gradient(90deg,var(--pink-200),transparent);opacity:0.5;}
+
+/* ── DESIGN SYSTEM CARD ── */
+.ds-card{
+  background:linear-gradient(135deg,#2a0e1e 0%,#1a0a14 100%);
+  border-radius:24px;padding:36px;margin-bottom:48px;
+  display:flex;align-items:center;gap:32px;
+  position:relative;overflow:hidden;
+  box-shadow:0 12px 48px rgba(61,26,43,0.2);
+  cursor:pointer;text-decoration:none;
+  transition:all 0.25s cubic-bezier(0.34,1.2,0.64,1);
+}
+.ds-card::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 0% 50%,rgba(255,143,174,0.14) 0%,transparent 60%),
+             radial-gradient(ellipse 40% 60% at 100% 50%,rgba(181,213,255,0.10) 0%,transparent 60%);}
+.ds-card:hover{transform:translateY(-6px);box-shadow:0 20px 64px rgba(61,26,43,0.28);}
+.ds-icon{width:80px;height:80px;border-radius:20px;background:linear-gradient(135deg,rgba(255,183,197,0.2),rgba(212,181,255,0.15));
+  border:1.5px solid rgba(255,183,197,0.25);display:flex;align-items:center;justify-content:center;
+  font-size:36px;flex-shrink:0;position:relative;z-index:1;}
+.ds-info{position:relative;z-index:1;flex:1;}
+.ds-eyebrow{font-family:var(--font-body);font-size:11px;color:rgba(255,183,197,0.45);letter-spacing:0.2em;margin-bottom:6px;}
+.ds-name{font-family:var(--font-main);font-weight:700;font-size:22px;color:white;margin-bottom:6px;}
+.ds-desc{font-family:var(--font-body);font-size:13px;color:rgba(255,183,197,0.55);line-height:1.7;}
+.ds-arrow{position:relative;z-index:1;font-size:28px;color:rgba(255,183,197,0.4);transition:transform 0.2s;}
+.ds-card:hover .ds-arrow{transform:translateX(6px);color:rgba(255,183,197,0.8);}
+
+/* palette chips on ds-card */
+.ds-chips{display:flex;gap:8px;margin-top:14px;}
+.ds-chip{width:24px;height:24px;border-radius:6px;border:2px solid rgba(255,255,255,0.15);}
+
+/* ── SCREEN CARDS GRID ── */
+.screens-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:48px;}
+
+.screen-card{
+  background:white;border-radius:20px;overflow:hidden;
+  box-shadow:var(--shadow-card);cursor:pointer;
+  border:2px solid transparent;
+  transition:all 0.25s cubic-bezier(0.34,1.2,0.64,1);
+  text-decoration:none;display:block;
+}
+.screen-card:hover{transform:translateY(-8px) scale(1.01);border-color:var(--pink-200);box-shadow:var(--shadow-pink);}
+
+.card-thumb{
+  height:170px;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:10px;position:relative;overflow:hidden;
+}
+.card-thumb::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(255,255,255,0.15) 100%);}
+.card-thumb-icon{font-size:48px;z-index:1;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.15));}
+.card-thumb-label{font-family:var(--font-body);font-size:11px;z-index:1;opacity:0.6;text-align:center;}
+
+.card-body{padding:18px 20px;}
+.card-num{font-family:var(--font-title);font-size:11px;color:var(--pink-400);letter-spacing:0.1em;margin-bottom:4px;}
+.card-name{font-family:var(--font-main);font-weight:700;font-size:16px;color:var(--text-dark);margin-bottom:4px;}
+.card-desc{font-family:var(--font-body);font-size:12px;color:var(--text-light);line-height:1.6;margin-bottom:12px;}
+.card-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.card-tag{padding:3px 10px;border-radius:999px;font-family:var(--font-main);font-size:10px;font-weight:700;
+  border:1.5px solid;background:transparent;}
+.card-open{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:12px;
+  border-top:1px solid var(--pink-50);}
+.card-open-text{font-family:var(--font-body);font-size:12px;color:var(--text-light);}
+.card-open-arrow{font-size:18px;color:var(--pink-300);transition:transform 0.2s;}
+.screen-card:hover .card-open-arrow{transform:translateX(4px);}
+
+/* ── FOOTER ── */
+.footer{text-align:center;padding:32px 40px;font-family:var(--font-body);font-size:12px;
+  color:var(--text-light);border-top:1.5px solid var(--pink-100);
+  background:white;position:relative;z-index:1;}
+</style>
+</head>
+<body>
+
+<div class="bg-fixed"></div>
+<div class="bg-dots"></div>
+
+<!-- Floating stars -->
+<svg class="fstar" style="top:12%;left:4%;width:44px;--d:9s;" viewBox="0 0 44 44"><path d="M22 3l3.2 10.8h11.3l-9.2 6.7 3.5 10.8-9.4-6.7-9.4 6.7 3.5-10.8L6.5 13.8H17.8z" fill="#FFB7C5"/></svg>
+<svg class="fstar" style="top:20%;right:6%;width:28px;--d:7s;--dl:-3s;" viewBox="0 0 28 28"><path d="M14 2l2 6.7h7l-5.6 4.1 2.1 6.6L14 15.5 8.5 19.4l2.1-6.6L5 8.7h7z" fill="#B5D5FF"/></svg>
+<svg class="fstar" style="top:55%;left:2%;width:22px;--d:11s;--dl:-5s;" viewBox="0 0 22 22"><path d="M11 1l1.5 5h5.3l-4.3 3.1 1.6 5L11 11.3 7.9 14.1l1.6-5L5.2 6h5.3z" fill="#D4B5FF"/></svg>
+<svg class="fstar" style="bottom:25%;right:3%;width:36px;--d:8s;--dl:-2s;" viewBox="0 0 36 36"><path d="M18 2l2.6 8.8h9.3l-7.6 5.5 2.9 8.8-7.2-5.2-7.2 5.2 2.9-8.8-7.6-5.5h9.3z" fill="#FFB7C5"/></svg>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-ring">
+    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+      <g class="hr1">
+        <circle cx="250" cy="250" r="235" fill="none" stroke="#FFB7C5" stroke-width="1.5" stroke-dasharray="7 7"/>
+        <circle cx="250" cy="250" r="215" fill="none" stroke="#D4B5FF" stroke-width="0.8" stroke-dasharray="3 12"/>
+      </g>
+      <g class="hr2">
+        <circle cx="250" cy="250" r="180" fill="none" stroke="#B5D5FF" stroke-width="1.2" stroke-dasharray="5 9"/>
+        <polygon points="250,65 320,210 485,210 350,295 400,445 250,360 100,445 150,295 15,210 180,210" fill="none" stroke="#FFB7C5" stroke-width="0.8"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-eyebrow">✦ Visual Novel Design Kit ✦</div>
+  <div class="hero-title">Hoshi ni Naru</div>
+  <div class="hero-ruby">星になる 〜TS娘の恋物語〜</div>
+  <div class="hero-desc">TS娘ヒロインのギャルゲー用デザインシステム。<br>カラーパレット・画面スクリーンセット一覧です。</div>
+  <div class="hero-badges">
+    <span class="hero-badge hb-pink">🌸 Pop &amp; Cute</span>
+    <span class="hero-badge hb-blue">💙 スカイブルー×ピンク</span>
+    <span class="hero-badge hb-purple">✨ 魔法少女テイスト</span>
+    <span class="hero-badge hb-pink">🎀 リボン・フリル</span>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- Design System -->
+  <div class="sec-heading">
+    <div class="sec-label">Design System</div>
+    <div class="sec-title">デザインシステム</div>
+  </div>
+
+  <a href="design-system/palette.html" class="ds-card">
+    <div class="ds-icon">🎨</div>
+    <div class="ds-info">
+      <div class="ds-eyebrow">COLOR PALETTE &amp; TONE</div>
+      <div class="ds-name">カラーパレット＆トンマナ</div>
+      <div class="ds-desc">ピンクスケール・スカイブルーアクセント・グラデーション・<br>タイポグラフィ・コンポーネント・ヒロインカラー定義</div>
+      <div class="ds-chips">
+        <div class="ds-chip" style="background:#FFB7C5;"></div>
+        <div class="ds-chip" style="background:#FF8FAE;"></div>
+        <div class="ds-chip" style="background:#FF4D90;"></div>
+        <div class="ds-chip" style="background:#B5D5FF;"></div>
+        <div class="ds-chip" style="background:#D4B5FF;"></div>
+        <div class="ds-chip" style="background:#3D1A2B;"></div>
+      </div>
+    </div>
+    <div class="ds-arrow">→</div>
+  </a>
+
+  <!-- Screens -->
+  <div class="sec-heading">
+    <div class="sec-label">Screens</div>
+    <div class="sec-title">画面スクリーンセット</div>
+  </div>
+
+  <div class="screens-grid">
+
+    <!-- Title -->
+    <a href="screens/Title.html" class="screen-card">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#2a0e1e,#1a0a14);">
+        <div class="card-thumb-icon">🌟</div>
+        <div class="card-thumb-label" style="color:rgba(255,183,197,0.5);">タイトル画面</div>
+      </div>
+      <div class="card-body">
+        <div class="card-num">Screen 01</div>
+        <div class="card-name">タイトル画面</div>
+        <div class="card-desc">ゲーム起動時のトップ画面。魔法陣・星空・桜エフェクト付き。メインメニューへのナビゲーション。</div>
+        <div class="card-tags">
+          <span class="card-tag" style="color:#FFB7C5;border-color:rgba(255,183,197,0.3);">ダーク</span>
+          <span class="card-tag" style="color:#D4B5FF;border-color:rgba(212,181,255,0.3);">魔法陣</span>
+          <span class="card-tag" style="color:#B5D5FF;border-color:rgba(181,213,255,0.3);">パーティクル</span>
+        </div>
+        <div class="card-open">
+          <span class="card-open-text">クリックして開く</span>
+          <span class="card-open-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Menu -->
+    <a href="screens/Menu.html" class="screen-card">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#FFF0F4,#FFD6E4);">
+        <div class="card-thumb-icon">🏠</div>
+        <div class="card-thumb-label" style="color:var(--text-light);">メニュー画面</div>
+      </div>
+      <div class="card-body">
+        <div class="card-num">Screen 02</div>
+        <div class="card-name">メニュー（ホーム）画面</div>
+        <div class="card-desc">サイドバーナビ・ヒロイン一覧・好感度バー・クイックアクション付きのゲーム内メインハブ。</div>
+        <div class="card-tags">
+          <span class="card-tag" style="color:var(--pink-400);border-color:var(--pink-100);">ライト</span>
+          <span class="card-tag" style="color:var(--pink-400);border-color:var(--pink-100);">サイドバー</span>
+          <span class="card-tag" style="color:#7AB8FF;border-color:rgba(122,184,255,0.3);">ダッシュボード</span>
+        </div>
+        <div class="card-open">
+          <span class="card-open-text">クリックして開く</span>
+          <span class="card-open-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Novel -->
+    <a href="screens/Novel.html" class="screen-card">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#1a0a14,#2a0e1e);">
+        <div class="card-thumb-icon">💬</div>
+        <div class="card-thumb-label" style="color:rgba(255,183,197,0.5);">ノベル画面</div>
+      </div>
+      <div class="card-body">
+        <div class="card-num">Screen 03</div>
+        <div class="card-name">会話・ノベル画面</div>
+        <div class="card-desc">テキストボックス・選択肢・オート／スキップ・複数キャラ立ち絵・4パターンシナリオ切替対応。</div>
+        <div class="card-tags">
+          <span class="card-tag" style="color:#FFB7C5;border-color:rgba(255,183,197,0.3);">ダーク</span>
+          <span class="card-tag" style="color:#FFB7C5;border-color:rgba(255,183,197,0.3);">インタラクティブ</span>
+          <span class="card-tag" style="color:#D4B5FF;border-color:rgba(212,181,255,0.3);">選択肢</span>
+        </div>
+        <div class="card-open">
+          <span class="card-open-text">クリックして開く</span>
+          <span class="card-open-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- CharSelect -->
+    <a href="screens/CharSelect.html" class="screen-card">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#2a0e1e,#0d0820);">
+        <div class="card-thumb-icon">💕</div>
+        <div class="card-thumb-label" style="color:rgba(255,183,197,0.5);">キャラ選択</div>
+      </div>
+      <div class="card-body">
+        <div class="card-num">Screen 04</div>
+        <div class="card-name">キャラクター選択画面</div>
+        <div class="card-desc">カルーセル式ヒロイン選択。キーボード・クリック操作対応。ロックキャラ・ステータス表示。</div>
+        <div class="card-tags">
+          <span class="card-tag" style="color:#FFB7C5;border-color:rgba(255,183,197,0.3);">ダーク</span>
+          <span class="card-tag" style="color:#FFB7C5;border-color:rgba(255,183,197,0.3);">カルーセル</span>
+          <span class="card-tag" style="color:#D4B5FF;border-color:rgba(212,181,255,0.3);">5ヒロイン</span>
+        </div>
+        <div class="card-open">
+          <span class="card-open-text">クリックして開く</span>
+          <span class="card-open-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Gallery -->
+    <a href="screens/Gallery.html" class="screen-card">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#FFF0F4,#E8F4FF);">
+        <div class="card-thumb-icon">🖼️</div>
+        <div class="card-thumb-label" style="color:var(--text-light);">ギャラリー</div>
+      </div>
+      <div class="card-body">
+        <div class="card-num">Screen 05</div>
+        <div class="card-name">CG ギャラリー</div>
+        <div class="card-desc">キャラ別フィルタ・解放済み／ロック表示・ライトボックスビューワー・キーボードナビ対応。</div>
+        <div class="card-tags">
+          <span class="card-tag" style="color:var(--pink-400);border-color:var(--pink-100);">ライト</span>
+          <span class="card-tag" style="color:var(--pink-400);border-color:var(--pink-100);">グリッド</span>
+          <span class="card-tag" style="color:#7AB8FF;border-color:rgba(122,184,255,0.3);">ライトボックス</span>
+        </div>
+        <div class="card-open">
+          <span class="card-open-text">クリックして開く</span>
+          <span class="card-open-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- SaveLoad -->
+    <a href="screens/SaveLoad.html" class="screen-card">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#FFD6E4,#B5D5FF);">
+        <div class="card-thumb-icon">💾</div>
+        <div class="card-thumb-label" style="color:var(--text-mid);">セーブ／ロード</div>
+      </div>
+      <div class="card-body">
+        <div class="card-num">Screen 06</div>
+        <div class="card-name">セーブ／ロード画面</div>
+        <div class="card-desc">10スロット・オートセーブ対応。セーブ／ロード切替・確認モーダル・サムネイル付き。</div>
+        <div class="card-tags">
+          <span class="card-tag" style="color:var(--pink-400);border-color:var(--pink-100);">ライト</span>
+          <span class="card-tag" style="color:var(--pink-400);border-color:var(--pink-100);">モーダル</span>
+          <span class="card-tag" style="color:#7AB8FF;border-color:rgba(122,184,255,0.3);">10スロット</span>
+        </div>
+        <div class="card-open">
+          <span class="card-open-text">クリックして開く</span>
+          <span class="card-open-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Config -->
+    <a href="screens/Config.html" class="screen-card">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#F0E8FF,#FFD6E4);">
+        <div class="card-thumb-icon">⚙️</div>
+        <div class="card-thumb-label" style="color:var(--text-mid);">設定画面</div>
+      </div>
+      <div class="card-body">
+        <div class="card-num">Screen 07</div>
+        <div class="card-name">コンフィグ設定画面</div>
+        <div class="card-desc">サウンド・テキスト・ディスプレイ・操作・システムの5カテゴリ。スライダー・トグル・ラジオ対応。</div>
+        <div class="card-tags">
+          <span class="card-tag" style="color:var(--pink-400);border-color:var(--pink-100);">ライト</span>
+          <span class="card-tag" style="color:#D4B5FF;border-color:rgba(212,181,255,0.3);">5カテゴリ</span>
+          <span class="card-tag" style="color:var(--pink-400);border-color:var(--pink-100);">コントロール</span>
+        </div>
+        <div class="card-open">
+          <span class="card-open-text">クリックして開く</span>
+          <span class="card-open-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<footer class="footer">
+  ✦ 星になる — デザインシステム v1.0 ✦ TS娘ヒロイン ギャルゲー ✦ Pop &amp; Cute ✦ 2025 ✦
+</footer>
+
+</body>
+</html>
