@@ -1,3 +1,5 @@
+const publicAsset = (path) => `${import.meta.env.BASE_URL}${path}`;
+
 export const screens = [
   {
     id: 'title',
@@ -5,7 +7,7 @@ export const screens = [
     title: 'タイトル画面',
     eyebrow: 'Title',
     description: '星空、魔法陣、桜の演出で作品の第一印象を作る起動画面。',
-    image: '/assets/ui/title-screen-ui.png',
+    image: publicAsset('assets/ui/title-screen-ui.png'),
   },
   {
     id: 'menu',
@@ -13,7 +15,7 @@ export const screens = [
     title: 'メニュー（ホーム）',
     eyebrow: 'Home',
     description: 'ヒロイン一覧、好感度、予定、クイックアクションを集約したメインハブ。',
-    image: '/assets/ui/menu-screen-ui.png',
+    image: publicAsset('assets/ui/menu-screen-ui.png'),
   },
   {
     id: 'novel',
@@ -21,7 +23,7 @@ export const screens = [
     title: '会話・ノベル画面',
     eyebrow: 'Novel',
     description: '立ち絵、選択肢、会話ログ操作を含む物語進行の中心画面。',
-    image: '/assets/ui/novel-screen-ui.png',
+    image: publicAsset('assets/ui/novel-screen-ui.png'),
   },
   {
     id: 'character-select',
@@ -29,7 +31,7 @@ export const screens = [
     title: 'キャラクター選択',
     eyebrow: 'Character',
     description: '5人のヒロインをカルーセルで比較し、プロフィールや好感度を確認する画面。',
-    image: '/assets/ui/char-select-screen-ui.png',
+    image: publicAsset('assets/ui/char-select-screen-ui.png'),
   },
   {
     id: 'gallery',
@@ -37,7 +39,7 @@ export const screens = [
     title: 'CGギャラリー',
     eyebrow: 'Gallery',
     description: '解放済みCG、ロック状態、キャラ別フィルタを一覧できる鑑賞画面。',
-    image: '/assets/ui/gallery-screen-ui.png',
+    image: publicAsset('assets/ui/gallery-screen-ui.png'),
   },
   {
     id: 'save-load',
@@ -45,7 +47,7 @@ export const screens = [
     title: 'セーブ／ロード',
     eyebrow: 'Save Load',
     description: '10スロット、オートセーブ、確認モーダルを備えた進行管理画面。',
-    image: '/assets/ui/save-load-screen-ui.png',
+    image: publicAsset('assets/ui/save-load-screen-ui.png'),
   },
   {
     id: 'config',
@@ -53,7 +55,7 @@ export const screens = [
     title: 'コンフィグ設定',
     eyebrow: 'Config',
     description: '音量、文字速度、表示、操作、システム設定を調整する画面。',
-    image: '/assets/ui/config-screen-ui.png',
+    image: publicAsset('assets/ui/config-screen-ui.png'),
   },
   {
     id: 'palette',
@@ -61,6 +63,6 @@ export const screens = [
     title: 'カラーパレット',
     eyebrow: 'Palette',
     description: '配色、タイポグラフィ、コンポーネント、ヒロインカラーをまとめた設計資料。',
-    image: '/assets/ui/palette-screen-ui.png',
+    image: publicAsset('assets/ui/palette-screen-ui.png'),
   },
 ];
